@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico">
+    <link rel="manifest" href="site.json">
+    <title>SmartYouTube</title>
+</head>
+<body>
+    <img src="./img/pwa.png" alt="" srcset="" style="width: 100vw;">
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+            background-color: #333333;
+        }
+    </style>
+    <script>
+        if ("serviceWorker" in navigator){
+            navigator.serviceWorker.register("js/serviceworker.js").then(function() {
+                alert("installed SW");
+            }).catch(function(err) {
+                alert(err);
+            });
+        }else{
+            alert("Don't support your browser.");
+        }
+    </script>
+</body>
+</html>

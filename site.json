@@ -1,0 +1,25 @@
+{
+    "short_name": "SmartYouTube",
+    "name": "SmartYouTube",
+    "start_url": "http://localhost:8000",
+    "display": "standalone",
+    "orientation": "portrait",
+    "icons": [
+      {
+        "src": "icon/x48.png",
+        "type": "image/png",
+        "sizes": "48x48"
+      },
+      {
+        "src": "icon/x64.png",
+        "type": "image/png",
+        "sizes": "64x64"
+      },
+      {
+        "src": "icon/x128.png",
+        "type": "image/png",
+        "sizes": "128x128"
+      }
+    ],
+    "background_color": "#333333"
+}
