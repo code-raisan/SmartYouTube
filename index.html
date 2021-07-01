@@ -10,6 +10,7 @@
 </head>
 <body>
     <img src="./img/pwa.png" alt="" srcset="" style="width: 100vw;">
+    <button id="addBtn">Install</button>
     <style>
         html,body{
             margin: 0;
@@ -19,14 +20,38 @@
     </style>
     <script>
         if ("serviceWorker" in navigator){
-            navigator.serviceWorker.register("js/serviceworker.js").then(function() {
+            navigator.serviceWorker.register("js/serviceworker.js").then(() =>{
                 alert("installed SW");
-            }).catch(function(err) {
+            }).catch((err) =>{
                 alert(err);
             });
         }else{
             alert("Don't support your browser.");
         }
+        
+        window.addEventListener("beforeinstallprompt", (e) => {
+            const addBtn = document.getElementById("addBtn");
+            e.preventDefault();
+            deferredPrompt = e;
+  // Update UI to notify the user they can add to home screen
+  addBtn.style.display = 'block';
+
+  addBtn.addEventListener('click', (e) => {
+    // hide our user interface that shows our A2HS button
+    addBtn.style.display = 'none';
+    // Show the prompt
+    deferredPrompt.prompt();
+    // Wait for the user to respond to the prompt
+    deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the A2HS prompt');
+        } else {
+          console.log('User dismissed the A2HS prompt');
+        }
+        deferredPrompt = null;
+      });
+  });
+});
     </script>
 </body>
 </html>
